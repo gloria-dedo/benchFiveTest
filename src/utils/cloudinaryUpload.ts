@@ -9,7 +9,7 @@ const uploadImageToCloudinary = async (file: File): Promise<string> => {
   });
 
   const data = await response.json();
-  return data.secure_url; // this is the uploaded image URL
+  return data.secure_url; 
 };
 
 export default uploadImageToCloudinary;

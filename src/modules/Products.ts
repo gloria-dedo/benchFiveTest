@@ -30,3 +30,4 @@ export interface FurnitureProduct extends BaseProduct {
 }
 
 export type Product = DVDProduct | BookProduct | FurnitureProduct;
+export type ProductTypeFilter = ProductType | "all";
