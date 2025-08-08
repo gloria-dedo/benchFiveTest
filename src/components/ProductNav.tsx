@@ -40,7 +40,7 @@ export default function ProductNav(){
   const selectedProductForEdit = getSelectedProductForEdit();
     return(
         <nav className="flex flex-col gap-3 bg-[#F5F5F4] px-8 border-b py-2  md:flex-row items-start md:items-center justify-between">
-            <div className="flex gap-3 items-center justify-between">
+            <div className="flex gap-3 items-center justify-between lg:justify-start w-full lg:w-xl">
                 <ProductPagination/>
             {/* <DateFilter/>  */}
             <ProductTypeFilter/> 
@@ -48,7 +48,7 @@ export default function ProductNav(){
              
             {/* <ProductPageSearchBar onSearch={() => {}}/>  */}
 
-                <div className="flex gap-3">
+                <div className="flex gap-3 justify-between lg:justify-end w-full lg:w-xl items-center">
                     {!isAnyProductSelected ? (
           <Link to="/add-product" className="text-sm items-center rounded-md flex gap-2 font-syne bg-black text-white px-4 py-2">
             <Plus className="h-4 w-4" />Add Product
