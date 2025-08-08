@@ -182,7 +182,7 @@ export default function ProductForm() {
               >
                                 <option value="dvd">DVD</option>               {" "}
                 <option value="furniture">Furniture</option>               {" "}
-                <option value="Book">Book</option>             {" "}
+                <option value="book">Book</option>             {" "}
               </select>
                          {" "}
             </div>
@@ -271,7 +271,7 @@ export default function ProductForm() {
               </>
             )}
                        {" "}
-            {productType === "Book" && (
+            {productType === "book" && (
               <div className="space-y-1">
                                {" "}
                 <label className="text-sm font-medium text-gray-600">
