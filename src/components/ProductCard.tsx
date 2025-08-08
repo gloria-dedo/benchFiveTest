@@ -4,6 +4,11 @@ import { useState, useEffect } from "react";
 // import { ProductType } from "@/modules/Products";
 import type { Product } from "@/modules/Products";
 import notFound from "@/assets/notFound.svg";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
 
 export default function ProductCard() {
@@ -23,20 +28,20 @@ export default function ProductCard() {
     }
   };
 
-  const handleProductNameClick = (imageUrl: string, productName: string) => {
-    const newWindow = window.open('', '_blank', 'width=800,height=600');
-    if (newWindow) {
-      newWindow.document.write(`
-        <html>
-          <head><title>${productName}</title></head>
-          <body style="margin:0;padding:20px;display:flex;flex-direction:column;align-items:center;background:#f5f5f5;">
-            <h1>${productName}</h1>
-            <img src="${imageUrl}" alt="${productName}" style="max-width:90%;border-radius:8px;" />
-          </body>
-        </html>
-      `);
-    }
-  };
+  // const handleProductNameClick = (imageUrl: string, productName: string) => {
+  //   const newWindow = window.open('', '_blank', 'width=800,height=600');
+  //   if (newWindow) {
+  //     newWindow.document.write(`
+  //       <html>
+  //         <head><title>${productName}</title></head>
+  //         <body style="margin:0;padding:20px;display:flex;flex-direction:column;align-items:center;background:#f5f5f5;">
+  //           <h1>${productName}</h1>
+  //           <img src="${imageUrl}" alt="${productName}" style="max-width:90%;border-radius:8px;" />
+  //         </body>
+  //       </html>
+  //     `);
+  //   }
+  // };
 
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
@@ -49,7 +54,7 @@ export default function ProductCard() {
   if (products.length === 0) {
     return (
       <div className="text-center flex flex-col justify-center items-center font-inter mt-28">
-        <img src ={notFound} className = "w-[25%] "></img>
+        <img src ={notFound} className = "w-full lg:w-[25%] "></img>
         <p className="text-xl text-black font-normal font-inter">You have no products.</p>
         <p className="text-gray-500">Let's fix that! Go ahead and add your  product!</p>
       </div>
@@ -79,12 +84,25 @@ export default function ProductCard() {
       <div className="w-full flex flex-col gap-3 px-2 py-2">
         <div>
           <p className="text-sm text-gray-700">#{product.sku || "N/A"}</p>
-          <button
-            onClick={() => handleProductNameClick(product.image, product.name)}
-            className="text-lg font-medium text-left hover:text-black hover:underline cursor-pointer"
-          >
-            {product.name || "N/A"}
-          </button>
+           <Popover>
+                  <PopoverTrigger asChild>
+                    <button className="text-lg font-medium text-left hover:text-black hover:underline cursor-pointer">
+                      {product.name || "N/A"}
+                    </button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-80 flex justify-center items-center">
+                    <div className="flex flex-col gap-4">
+                      <h3 className="text-lg font-semibold leading-none">
+                        {product.name}
+                      </h3>
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="rounded-md object-cover"
+                      />
+                    </div>
+                  </PopoverContent>
+                </Popover>
           <p className="text-sm text-gray-700">{product.description || "N/A"}</p>
         </div>
         <div className="flex justify-between items-center">
