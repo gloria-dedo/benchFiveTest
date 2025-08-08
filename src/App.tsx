@@ -4,6 +4,7 @@ import ProductForm from "./pages/AddProductForm";
 import { ProductProvider } from "./context/ProductPageProvider";
 import EditProduct from "./pages/EditProduct";
 import Onboarding from "./pages/Onboarding";
+import CustomSkeleton from "./components/Skeletal";
 
 const benchFiveTestRoutes = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const benchFiveTestRoutes = createBrowserRouter([
     path: "/onboarding",
     element: <Onboarding/>
 
+  },
+  {
+    path: "/skeleton",
+    element: <CustomSkeleton/>
   }
 ]);
 
