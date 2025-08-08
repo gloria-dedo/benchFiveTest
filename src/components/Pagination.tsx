@@ -88,7 +88,7 @@ export default function ProductPagination() {
             <ChevronLeft className="h-4 w-4" />
           </button>
 
-          {/* Page numbers - simplified for mobile */}
+          
           <div className="flex items-center gap-1">
             {Array.from({ length: Math.min(3, totalPages) }, (_, i) => {
               let pageNum;

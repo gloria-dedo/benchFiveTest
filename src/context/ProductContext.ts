@@ -11,7 +11,7 @@ interface ProductContextType {
   selectedProducts: string[];
   selectProduct: (sku: string) => void;
   unselectProduct: (sku: string) => void;
-  selectAllProducts: (productSkus: string[]) => void; // ✅ Fix here
+  selectAllProducts: (productSkus: string[]) => void; 
   unselectAllProducts: () => void;
   isAnyProductSelected: boolean;
   setSelectedProducts: React.Dispatch<React.SetStateAction<string[]>>;

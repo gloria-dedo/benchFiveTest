@@ -3,6 +3,7 @@ import { useProducts } from "@/context";
 import { useState, useEffect } from "react";
 // import { ProductType } from "@/modules/Products";
 import type { Product } from "@/modules/Products";
+import sweetImg from "@/assets/sweet.svg";
 
 export default function ProductCard() {
 
@@ -46,9 +47,10 @@ export default function ProductCard() {
 
   if (products.length === 0) {
     return (
-      <div className="text-center mt-12 font-inter">
-        <p className="text-xl">No products found.</p>
-        <p className="text-gray-500">Go ahead and add your first product!</p>
+      <div className="text-center flex flex-col justify-center items-center font-inter mt-28">
+        <img src ={sweetImg} className = "w-[25%] "></img>
+        <p className="text-xl text-black font-normal font-inter">You have no products.</p>
+        <p className="text-gray-500">Let's fix that! Go ahead and add your  product!</p>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import ProductForm from "./pages/AddProductForm";
 import { ProductProvider } from "./context/ProductPageProvider";
 import EditProduct from "./pages/EditProduct";
+import Onboarding from "./pages/Onboarding";
 
 const benchFiveTestRoutes = createBrowserRouter([
   {
@@ -16,6 +17,11 @@ const benchFiveTestRoutes = createBrowserRouter([
   {
     path: "/edit-product/:sku",
     element: <EditProduct />,
+  },
+  {
+    path: "/onboarding",
+    element: <Onboarding/>
+
   }
 ]);
 
