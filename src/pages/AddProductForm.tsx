@@ -9,7 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 export default function ProductForm() {
   const navigate = useNavigate();
   const [productType, setProductType] = useState("dvd");
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     productName: "",
     productPrice: "",
@@ -32,7 +32,6 @@ export default function ProductForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
@@ -52,58 +51,54 @@ export default function ProductForm() {
     }
   };
 
-  
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+    if (!formData.image) {
+      toast.error("Please upload a product image first.");
+      return;
+    }
 
-  if (!formData.image) {
-    toast.error("Please upload a product image first.");
-    return;
-  }
+    const toastId = toast.loading("Saving product...");
+    setIsLoading(true);
 
-  const toastId = toast.loading("Saving product...");
-  setIsLoading(true);
+    try {
+      const sku = generateSKU();
 
-  try {
-    const sku = generateSKU();
-    
-   
-    const { productName, productPrice, category, ...rest } = formData;
+      const { productName, productPrice, category, ...rest } = formData;
 
-    
-    const productData = {
-      ...rest,          
-      sku,
-      name: productName,  
-      price: productPrice, 
-      type: category,       
-    };
-   
+      const productData = {
+        ...rest,
+        sku,
+        name: productName,
+        price: productPrice,
+        type: category,
+      };
 
-    const existingProducts = JSON.parse(
-      localStorage.getItem("products") || "[]"
-    );
-    const updatedProducts = [...existingProducts, productData];
+      const existingProducts = JSON.parse(
+        localStorage.getItem("products") || "[]"
+      );
+      const updatedProducts = [...existingProducts, productData];
 
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
+      localStorage.setItem("products", JSON.stringify(updatedProducts));
 
-    console.log("Product saved to local storage:", productData);
-    toast.success("Product added successfully!", { id: toastId });
+      console.log("Product saved to local storage:", productData);
+      toast.success("Product added successfully!", { id: toastId });
 
-    setTimeout(() => {
-      navigate("/");
-    }, 1500);
-  } catch (error) {
-    toast.error("Failed to save product. Please try again.", { id: toastId });
-    console.error("Failed to save product:", error);
-  } finally {
-    setIsLoading(false);
-  }
-};
+      setTimeout(() => {
+        navigate("/");
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
+      }, 1500);
+    } catch (error) {
+      toast.error("Failed to save product. Please try again.", { id: toastId });
+      console.error("Failed to save product:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-  
- 
   useEffect(() => {
     setProductType(formData.category);
   }, [formData.category]);
@@ -118,7 +113,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
           <div className="flex gap-2">
             <button
               type="submit"
-              disabled={isLoading} 
+              disabled={isLoading}
               className="flex gap-2 py-2 text-sm font-inter rounded-full justify-center items-center bg-black text-white/90 w-full md:w-[180px] cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
               <Save className=" w-3 h-3 md:h-4 md:w-4" />
@@ -134,7 +129,6 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         </div>
         <div className="flex flex-col lg:flex-row w-full justify-center gap-8 ">
           <div className="w-full lg:w-[40%] flex flex-col space-y-4">
-            
             <div className="space-y-1">
                            {" "}
               <label className="text-sm font-medium text-gray-600">
@@ -258,8 +252,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                 <div className="space-y-1">
                                    {" "}
                   <label className="text-sm font-medium text-gray-600">
-                                      
-                    Furniture Length (CM){" "}
+                                      Furniture Length (CM){" "}
                     <span className="text-red-500">*</span>                 {" "}
                   </label>
                                    {" "}
