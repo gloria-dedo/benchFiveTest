@@ -1,6 +1,6 @@
 import { ChevronDown, Menu, Home } from "lucide-react";
 import DashboardSearchBar from "./SearchBar";
-import ProductNav from "./ProductNav";
+// import ProductNav from "./ProductNav";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky w-full z-50  justify-between top-0 text-lg font-syne flex h-14 items-center gap-4  bg-black px-4 py-2 md:px-8 md:py-8">
-      <div className="md:hidden">
+      <div className="md:hidden ">
         <Sheet>
           <SheetTrigger asChild>
             <Button size="icon" variant="outline">
@@ -43,14 +43,14 @@ const Navbar = () => {
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left">
-            <nav className="grid gap-6 text-lg font-medium mt-4">
+          <SheetContent side="left" className="bg-black text-white border-r border-gray-800">
+            <nav className="grid gap-6 text-lg font-medium mt-4 px-4">
               <Link to="/" className="flex items-center gap-2 text-lg font-semibold mb-4"><Home className="h-6 w-6" /> <span>Home</span></Link>
               <Link to="/add-product" className="text-muted-foreground hover:text-foreground">Add Product</Link>
             </nav>  
-              <div className="block md:hidden">
+              {/* <div className="block md:hidden">
       <ProductNav />
-    </div>
+    </div> */}
           </SheetContent>
       
         </Sheet>
