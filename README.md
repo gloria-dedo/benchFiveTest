@@ -1,70 +1,50 @@
-# benchFiveTest
-BenchFive Frontend Developer Test – Product Management Web App This is my solution to the BenchFive Frontend Engineer/Developer Test Assignment. The project is a React + TypeScript web application for managing products, featuring a Product List page and an Add/Edit Product page with dynamic form fields, browser storage, and a clean responsive UI.
- Project Features
-Product List Page
+# Product Management Web App – BenchFive Frontend Test
+A simple React + TypeScript web app for managing products with local storage persistence, dynamic form fields, and a clean UI.
 
-Displays all products stored in browser local storage.
+Quick Start
+# Clone the repository
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/benchfive-product-app.git
+# Navigate to project folder
+bash
+Copy
+Edit
+cd benchfive-product-app
+# Install dependencies
+bash
+Copy
+Edit
+npm install
+# Run the development server
+bash
+Copy
+Edit
+npm start
+Your app will be available at http://localhost:3000
 
-Shows SKU, Name, Price, and a product-specific attribute:
-
-DVD → Size (MB)
-
-Book → Weight (Kg)
-
-Furniture → Dimensions (HxWxL)
-
-Clickable product name opens image in a new tab.
-
-Select products via checkboxes for:
-
-EDIT: Opens edit form (only when one product is selected).
-
-MASS DELETE: Removes selected products.
-
-Pagination (10 products per page).
-
-Add/Edit Product Page
-
-Form fields:
-
-SKU (unique)
-
-Name
-
-Price ($)
-
-Image URL
-
-Product Type (DVD / Book / Furniture)
-
-Dynamic fields based on type selection:
-
-DVD → Size (MB)
-
-Book → Weight (Kg)
-
-Furniture → Height, Width, Length
-
-Real-time validation for required fields and correct data types.
-
-Auto-generated unique SKU to prevent duplicates.
-
-Cancel or Save to return to the Product List page.
-
-Data Persistence
-
-Products are saved in browser localStorage and persist across page reloads.
-
-Tech Stack
-
-React (with Hooks)
+# Tech Stack
+React (Hooks & Context API)
 
 TypeScript
 
-Context API (for state management)
+React Router
 
-React Router (for navigation)
+Tailwind CSS
 
-Tailwind CSS (for styling)
+LocalStorage for product data
 
-LocalStorage (for saving products)
+# Features
+View products with SKU, Name, Price, and type-specific attributes.
+
+Add, edit, and delete products.
+
+Dynamic fields change based on product type (DVD, Book, Furniture).
+
+Mass delete multiple products at once.
+
+Data persists via browser local storage.
+
+🌐 Live Demo
+🔗 
