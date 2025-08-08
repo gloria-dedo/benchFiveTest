@@ -90,7 +90,7 @@ export default function ProductCard() {
                       {product.name || "N/A"}
                     </button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-80 flex justify-center items-center">
+                  <PopoverContent className="w-80  flex justify-center items-center">
                     <div className="flex flex-col gap-4">
                       <h3 className="text-lg font-semibold leading-none">
                         {product.name}
@@ -98,7 +98,7 @@ export default function ProductCard() {
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="rounded-md object-cover"
+                        className="rounded-md object-cover h-full w-full md:h-80 md:w-80"
                       />
                     </div>
                   </PopoverContent>
