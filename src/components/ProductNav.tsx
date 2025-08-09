@@ -46,7 +46,7 @@ export default function ProductNav(){
     return(
         <nav
       className={`fixed top-14 md:top-16 items-center w-full lg:h-14 h-30 bottom-0 z-30 flex flex-col gap-3 bg-white px-8 py-2 md:flex-row justify-between transition-shadow duration-200 ${
-        isScrolled ? 'shadow-md border-b border-gray-200' : 'border-b-gray-100 '
+        isScrolled ? 'shadow-md border-b border-gray-200' : ' '
       }`}
     >
             <div className="flex gap-3 items-center justify-between lg:justify-start w-full lg:w-xl">
