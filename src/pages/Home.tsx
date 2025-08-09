@@ -24,7 +24,7 @@ export default function Home(){
         ):(<section className="bg-white min-h-screen ">
             <Navbar/>
             <ProductNav/>
-            <div className=" px-8 space-y-8 ">
+            <div className=" px-8 space-y-8 lg:mt-20  mt-35 relative z-20">
             
             <ProductCard/>
                 

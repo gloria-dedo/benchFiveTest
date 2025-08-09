@@ -4,8 +4,25 @@ import ProductTypeFilter from "./ProductFilter";
 import { useProducts } from "@/context";
 // import ProductPageSearchBar from "./ProductPageSearchBAR";
 import { Plus, Trash , Edit} from "lucide-react";
+import { useState, useEffect} from "react";
 import { Link } from "react-router";
 export default function ProductNav(){
+ const [isScrolled, setIsScrolled] = useState(false);
+
+ useEffect(() => {
+    const handleScroll = () => {
+  
+      if (window.scrollY > 70) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
      const { 
     selectedProducts, 
     isAnyProductSelected, 
@@ -17,18 +34,6 @@ export default function ProductNav(){
   deleteSelectedProducts();
 };
 
-//   const handleMassDelete = () => {
-//     if (selectedProducts.length === 0) return;
-    
-//     const confirmDelete = window.confirm(
-//       `Are you sure you want to delete ${selectedProducts.length} selected product(s)?`
-//     );
-    
-//     if (confirmDelete) {
-//       deleteSelectedProducts();
-//       alert(`${selectedProducts.length} product(s) deleted successfully!`);
-//     }
-//   };
 
   const getSelectedProductForEdit = () => {
     if (selectedProducts.length === 1) {
@@ -39,7 +44,11 @@ export default function ProductNav(){
 
   const selectedProductForEdit = getSelectedProductForEdit();
     return(
-        <nav className="flex flex-col gap-3 bg-[#F5F5F4] px-8 border-b py-2  md:flex-row items-start md:items-center justify-between">
+        <nav
+      className={`fixed top-14 md:top-16 items-center w-full lg:h-14 h-30 bottom-0 z-30 flex flex-col gap-3 bg-white px-8 py-2 md:flex-row justify-between transition-shadow duration-200 ${
+        isScrolled ? 'shadow-md border-b border-gray-200' : 'border-b-gray-100 '
+      }`}
+    >
             <div className="flex gap-3 items-center justify-between lg:justify-start w-full lg:w-xl">
                 <ProductPagination/>
             {/* <DateFilter/>  */}
